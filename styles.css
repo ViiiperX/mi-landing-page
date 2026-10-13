@@ -1,0 +1,233 @@
+/* 1. Reseteo Universal (box Model) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*estilos para toda la pagina */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9; /* Dondo gris muy ssuave */
+    color: #2c3e50; /* Texto gris oscuro facil de leer */
+    line-height: 1.6;  /* Interluneado comodo para la lectura */
+    padding: 20px;
+    max-width: 800%;  /* Limita el ancho en pantallas grandes */
+    margin: 0 auto ;  /* Centra todo el contenido */
+}
+
+/* Titulos llamativo */
+h1 { 
+    color: #1a365d;
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+h2{
+    color: #2b6cb0;
+    font-size: 24px;
+    margin: 25px 0 15px 0;
+}
+
+/* Imagen atractiva con bordes redondeados y sombras */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    margin: 20px auto;
+}
+
+/* Lista de beneficios bien espaciada */
+ul {
+    list-style-type: none;  /* Logica de tarjeta con borde azul */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Boton de WhatsApp / Comprar */
+a {
+    display: inline-block;
+    background-color: #25d366 /* Verde caracteristico de WhatsApp */;
+    color: #ffffff;
+    text-decoration: none;  /* Quita la linea de subrayado */
+    padding: 14px 28px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 30px;   /* Bordes totalmente redondeados */
+    box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+    transition: all 0.3s ease;  /* Transicion suave para animacion */
+}
+
+/* Efecto al pasar el curso (hover) */
+a:hover {
+    background-color: #1ebc57;
+    transform: translate(-3px);  /* Levanta levemente el boton */
+    box-shadow: 0 6px 15px rgba(37,211,102,0.4);
+}
+
+form {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px rgba(0,0,0,0.08);
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #4a5568;
+}
+ input {
+    width: 30%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #cdb5e0;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+ }
+
+ /* Boton del formulario */
+ button {
+    width: 30%;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: backgrund-color 0.2s ease;
+    text-align: center;
+    
+ }
+
+ button:hover {
+    background-color: #2b6cb0;
+ }
+
+ /* --- BARRA DE NAVEGACIÓN CON FLEXBOX --- */
+.navbar {
+    display: flex;                   /* 1. Activa Flexbox */
+    justify-content: space-between;  /* 2. Empuja el logo a la izq y el menú a la der */
+    align-items: center;             /* 3. Centra los elementos verticalmente */
+    background-color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a365d;
+}
+.logo span {
+    color: #2b6cb0 ;    /* Color contrastante para el logo */
+}
+
+/* Flexbox para los enlaces de navegación */
+.nav-links {
+    display: flex ;        /* Coloca las opciones del menú una al lado de otra */
+    list-style: none;   
+    gap: 20px;             /* Espacio uniforme entre cada opción */
+}
+
+.nav-links li {
+    /* Reseteamos los estilos de tarjeta que teníamos en los li anteriores */
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.nav-links a {
+    /* Reseteamos el estilo de botón verde solo para estos enlaces */
+    background: none;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.nav-links a:hover {
+    color: #2b6cb0;
+    transform: none;
+}
+
+/* --- TARJETAS ALINEADAS CON FLEXBOX --- */
+.contenedor-tarjetas {
+    display: flex;              /* Alinea las dos tarjetas lado a lado */
+    gap: 20px ;                 /* Espacio entre las tarjetas */
+    margin-bottom: 30px;
+}
+
+.tarjeta {
+    flex: 1;                     /* Obliga a que ambas tarjetas tengan el mismo ancho */
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border-top: 4px solid #cdb5e0;
+    box-shadow: 0 px 10px rgba(0,0,0,0.05);
+}
+
+.tarjeta.destacada {
+    border-top: 4px solid #2b6cb0;   /* Resalta la tarjeta principal */
+}
+
+.precio {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a365d;
+}
+.precio span {
+    font-size: 14px;
+    color: #718096;
+}
+/* ==========================================
+   DISEÑO RESPONSIVO PARA CELULARES (MÓVILES)
+   ========================================== */
+   @media (max-width:768px) {
+
+    /* 1. Ajuste del padding general */
+    body {
+        padding: 10px;
+    }
+/* 2. Barra de Navegación en columna */
+.navbar {
+    flex-direction: column;           /* Cambia de fila a columna */
+    gap: 15px;
+    text-align: center;
+}
+.nav-links {
+    gap: 12px;
+    flex-wrap: wrap;           /* Si los enlaces no entran, se acomodan abajo */
+    justify-content: center;
+}
+/* 3. Títulos más adaptados a pantallas pequeñas */
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+/* 4. Tarjetas de Planes en columna vertical */
+.contenedor-tarjetas {
+    flex-direction: column;           /* Apila las tarjetas una sobre otra */
+}
+/* 5. Botón de WhatsApp a ancho completo */
+a{
+    display: block;                 /* Ocupa todo el ancho disponible */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+   }
