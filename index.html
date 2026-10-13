@@ -52,21 +52,100 @@
 
     <hr>
 
-    <!-- Formulario de Contacto -->
+<!-- Formulario Interactivo -->
     <h2>Solicita tu Cotización</h2>
-    <form>
+    <form id="formulario-cotizacion">
         <div>
             <label for="nombre">Tu Nombre:</label><br>
-            <input type="text" id="nombre" placeholder="Ej. Juan Pérez">
+            <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
         </div>
         <br>
         <div>
             <label for="telefono">Tu Teléfono / WhatsApp:</label><br>
-            <input type="tel" id="telefono" placeholder="Ej. +591 70000000">
+            <input type="tel" id="telefono" placeholder="Ej. +591 70000000" required>
         </div>
         <br>
-        <button type="submit">Enviar Solicitud</button>
+        <!-- Cambiamos el botón para que ejecute una acción de JS -->
+        <button type="submit" id="btn-enviar">Enviar por WhatsApp</button>
     </form>
+<script>
+        // 1. Capturamos el formulario y los campos mediante su ID
+        const formulario = document.getElementById('formulario-cotizacion');
+        const inputNombre = document.getElementById('nombre');
+        const inputTelefono = document.getElementById('telefono');
 
+        // 2. Escuchamos cuando el usuario hace clic en el botón de enviar
+        formulario.addEventListener('submit', function(evento) {
+            // Evitamos que la página se recargue por defecto
+            evento.preventDefault();
+
+            // 3. Obtenemos lo que el usuario escribió
+            const nombreCliente = inputNombre.value;
+            const telefonoCliente = inputTelefono.value;
+
+            // 4. Tu número de WhatsApp de negocio (reemplázalo con el tuyo, incluye código de país sin el '+')
+            const tuNumeroWhatsApp = "59170000000"; 
+
+            // 5. Creamos el texto del mensaje automático
+            const mensaje = `Hola, mi nombre es ${nombreCliente}. Mi teléfono es ${telefonoCliente}. Estoy interesado en el servicio de Internet Satelital y deseo una cotización.`;
+
+            // 6. Codificamos el mensaje para que sea apto para URLs web
+            const mensajeCodificado = encodeURIComponent(mensaje);
+
+            // 7. Creamos el enlace oficial de WhatsApp y abrimos la ventana
+            const urlWhatsApp = `https://wa.me/${tuNumeroWhatsApp}?text=${mensajeCodificado}`;
+            
+            // Abre WhatsApp en una nueva pestaña con los datos listos
+            window.open(urlWhatsApp, '_blank');
+        });
+    </script>
+    <!-- Sección de Calculadora de Precios -->
+    <section class="calculadora-seccion">
+        <h2>Personaliza tu Pedido</h2>
+        
+        <!-- Selección de Plan -->
+        <label>Elige tu Plan:</label>
+        <select id="select-plan">
+            <option value="50">Plan Hogar ($50)</option>
+            <option value="90">Plan Negocio ($90)</option>
+        </select>
+
+        <br><br>
+
+        <!-- Opción Adicional (Checkbox) -->
+        <label>
+            <input type="checkbox" id="check-soporte"> Agregar Soporte Técnico VIP (+$20)
+        </label>
+
+        <!-- Precio Total Dinámico -->
+        <div class="caja-total">
+            <h3>Total a Pagar: $<span id="precio-total">50</span> USD</h3>
+        </div>
+    </section>
+    <script>
+        // 1. Capturamos los elementos del HTML mediante sus ID
+        const selectPlan = document.getElementById('select-plan');
+        const checkSoporte = document.getElementById('check-soporte');
+        const spanPrecioTotal = document.getElementById('precio-total');
+
+        // 2. Creamos una función que calcula el precio total
+        function calcularPrecio() {
+            // Obtenemos el valor numérico del plan seleccionado (convertido a número con Number())
+            let precioPlan = Number(selectPlan.value);
+
+            // Verificamos si el checkbox de soporte está marcado (true o false)
+            let precioSoporte = checkSoporte.checked ? 20 : 0;
+
+            // Sumamos ambos valores
+            let total = precioPlan + precioSoporte;
+
+            // Mostramos el resultado final en la pantalla dentro del span
+            spanPrecioTotal.textContent = total;
+        }
+
+        // 3. Escuchamos cuando el usuario cambia el plan o hace clic en el checkbox
+        selectPlan.addEventListener('change', calcularPrecio);
+        checkSoporte.addEventListener('change', calcularPrecio);
+    </script>
 </body>
 </html>
